@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Chase App running on Firefox Browser">
+
+    <parameter name="useSauceLab" value="false"/>
+    <parameter name="userName" value="mdalam"/>
+    <parameter name="key" value="662b4ed7-1a59-4ab2-ae8c-2dfe1e32f4aa"/>
+    <parameter name="appUrl" value="https://applicationsstage.labor.state.nyenet/wpm/index.jsp"/>
+    <parameter name="os" value="windows"/>
+    <parameter name="browserName" value="firefox"/>
+    <parameter name="browserVersion" value="32.0.1"/>
+
+    <test name="Home Page">
+        <classes>
+            <!--<class name="SignupTest"/>-->
+            <!--<class name="SignInTest"/>-->
+            <class name="CreateClaimTest"/>
+            <!--<class name="SignoutTest"/>-->
+            <!--<class name="EmailBunceeTest"/>-->
+            <!--<class name="DownloadPdfTest"/>-->
+            <!--<class name="LikeBunceeTest"/>-->
+            <!--<class name="CommentBunceeTest"/>-->
+            <!--<class name="ShareInFacebookTest"/>-->
+            <!--<class name="DeleteBunceeTest"/>-->
+            <!--<class name="SigninTest"/>-->
+        </classes>
+    </test>
+
+</suite>

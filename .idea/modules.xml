@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DOL.iml" filepath="$PROJECT_DIR$/DOL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Generic/Generic.iml" filepath="$PROJECT_DIR$/Generic/Generic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TWC/TWC.iml" filepath="$PROJECT_DIR$/TWC/TWC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WPM/WPM.iml" filepath="$PROJECT_DIR$/WPM/WPM.iml" />
+    </modules>
+  </component>
+</project>
