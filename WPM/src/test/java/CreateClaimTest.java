@@ -159,7 +159,7 @@ public class CreateClaimTest extends WPM_Base{
          * Claimant Contact Information
          */
         typeByXpath(claimantFirstName, "QMC");
-        typeByXpath(claimantLastName, "PW_" + increment(1000));
+        typeByXpath(claimantLastName, "PW_" + increment());
         typeByXpath(claimantSsn1, "999");
         typeByXpath(claimantSsn2, "88");
         typeByXpath(claimantSsn3, "" + steady);

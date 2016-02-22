@@ -177,12 +177,13 @@ public class Base {
         return "" + LocalDateTime.now().getYear();
     }
 
-    public int increment(int num) {
-        count = num;
-        return steady = ++count;
+
+    public int increment() {
+        steady = ++count;
+        return count;
     }
 
-    public int count;
+    public int count=1000;
     public int steady;
 
     public void selectFromDropdown(String locator, int index) {
