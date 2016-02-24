@@ -9,7 +9,7 @@ import java.io.BufferedWriter;
  */
 public class CreateClaimTest extends WPM_Base{
 
-    private int numberOfClaim = 5;
+    private int numberOfClaim = 2;
 
     /**
 	 * Audit and Monetary System

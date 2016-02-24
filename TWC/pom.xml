@@ -11,5 +11,11 @@
 
     <artifactId>TWC</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>gov.dol.soa_app</groupId>
+            <artifactId>Generic</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

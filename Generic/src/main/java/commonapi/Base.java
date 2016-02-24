@@ -1,6 +1,7 @@
 package commonapi;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -21,8 +22,11 @@ import org.testng.annotations.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -52,9 +56,9 @@ public class Base {
 
     @AfterMethod
     public void cleanUp()throws InterruptedException{
-        sleepfor(2);
+        //sleepfor(2);
         log.info("driver is quiting");
-        sleepfor(2);
+        //sleepfor(2);
         driver.quit();
     }
     //get local driver
@@ -64,7 +68,7 @@ public class Base {
             driver = new FirefoxDriver();
         }else if(browserName.equalsIgnoreCase("chrome")){
             if(os.equalsIgnoreCase("windows")){
-                System.setProperty("webdriver.chrome.driver","Generic\\selenium-browser-driver\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver","selenium-browser-driver\\chromedriver.exe");
             }else{
                 System.setProperty("webdriver.chrome.driver", "Generic/selenium-browser-driver/chromedriver");
             }
@@ -72,7 +76,7 @@ public class Base {
         }else if(browserName.equalsIgnoreCase("safari")){
             driver = new SafariDriver();
         }else if(browserName.equalsIgnoreCase("ie")){
-            System.setProperty("webdriver.ie.driver","Generic\\selenium-browser-driver\\IEDriverServer.exe");
+            System.setProperty("webdriver.ie.driver","selenium-browser-driver\\IEDriverServer.exe");
             driver = new InternetExplorerDriver();
         }else if(browserName.equalsIgnoreCase("htmlunit")){
             driver = new HtmlUnitDriver();
@@ -144,6 +148,11 @@ public class Base {
 
     }
 
+    public void typeByXpathThenEnter(String locator, String value ) {
+        driver.findElement(By.xpath(locator)).sendKeys(value, Keys.ENTER);
+
+    }
+
     public void typeByXpath(String locator, String text){
         driver.findElement(By.xpath(locator)).sendKeys(text);
     }
@@ -165,6 +174,23 @@ public class Base {
         }
     }
 
+    public void clearField(String locator){
+        driver.findElement(By.xpath(locator)).clear();}
+
+
+    public String getTodaysDate() {
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+    public String getDateOfChoose(int days) {
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+        Date date = new Date();
+       // dateFormat.format(date);
+        return "" + dateFormat.format(DateUtils.addDays(date, days));
+    }
+
     public String getCurrentMonth() {
         return "" + LocalDateTime.now().getMonthValue();
     }
@@ -176,7 +202,6 @@ public class Base {
     public String getCurrentYear() {
         return "" + LocalDateTime.now().getYear();
     }
-
 
     public int increment() {
         steady = ++count;

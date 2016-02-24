@@ -11,6 +11,6 @@ public class WPM_Base extends Base {
         typeByCss("#PASSWORD", password);
         clickByXpath(".//*[@id='signin']");
         Assert.assertEquals("NYSDOL - Audit/Monetary System", driver.getTitle());
-        log.info("Successfully loged in on Booker!");
+        log.info("Successfully loged in on WPM!");
     }
 }
