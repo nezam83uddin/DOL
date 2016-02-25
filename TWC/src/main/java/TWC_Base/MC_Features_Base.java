@@ -1,5 +1,7 @@
 package TWC_Base;
 
+import java.util.Date;
+
 /**
  * Created by nd0ma3 on 2/22/2016.
  */
@@ -18,6 +20,8 @@ public class MC_Features_Base extends TWC_Base{
     public String firstJob = ".//*[@id='form:myTable']/tbody/tr[1]/td[2]/a";
     public String firstInFile = ".//*[@id='form:myTable']/tbody/tr[1]/td[4]/a";
     public String firstOutFile = ".//*[@id='form:myTable']/tbody/tr[1]/td[5]/a";
+    public String showingMessage = ".//*[@id='form:myTable_info']";
+    public String dateErrorMessage = ".//*[@id='errMsgGroup']/ul/li";
 
     /**
      * This function will check that User able to login successfully.
@@ -40,7 +44,7 @@ public class MC_Features_Base extends TWC_Base{
      */
     public void enterDateRangeInMessageSection() {
         clearField(dateRangeFrom);
-        typeByXpath(dateRangeFrom, getDateOfChoose(-30));
+        typeByXpath(dateRangeFrom, getDateOfChoose(new Date(), -30));
         clearField(dateRangeTo);
         typeByXpathThenEnter(dateRangeTo, getTodaysDate());
         typeByXpathThenEnter(dateRangeTo, "");

@@ -34,7 +34,7 @@ import java.util.logging.Logger;
  * Created by mdalam on 2/1/16.
  */
 public class Base {
-
+    public DesiredCapabilities cap = new DesiredCapabilities();
     public WebDriver driver = null;
     public Logger log = Logger.getLogger(Base.class.getName());
     @Parameters({"useSauceLab","userName", "key","appUrl","os","browserName","browserVersion"})
@@ -89,14 +89,13 @@ public class Base {
     public WebDriver getSauceLabDriver(String userName, String key, String os, String browserName,
                                        String browserVersion )throws IOException{
 
-        DesiredCapabilities cap = new DesiredCapabilities();
+//        DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("platform", os);
         cap.setBrowserName(browserName);
         cap.setCapability("version", browserVersion);
 
         driver = new RemoteWebDriver(new URL("http://"+ userName + ":" +  key +
                 "@ondemand.saucelabs.com:80/wd/hub"), cap);
-
         return driver;
     }
 
@@ -120,10 +119,6 @@ public class Base {
 
     public void getElementByname(String locator){
         driver.findElement(By.name(locator));
-    }
-
-    public void syso(String value){
-       System.out.println(value);
     }
 
     public void tonavBack(){
@@ -184,11 +179,19 @@ public class Base {
         return dateFormat.format(date);
     }
 
-    public String getDateOfChoose(int days) {
+    public String getDateOfChoose(Date date, int days) {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
-        Date date = new Date();
+        //Date date = new Date();
        // dateFormat.format(date);
         return "" + dateFormat.format(DateUtils.addDays(date, days));
+    }
+
+    public String getAttributeByXpath(String locator) {
+        return driver.findElement(By.xpath(locator)).getAttribute("value");
+    }
+
+    public String getTextByXpath(String locator) {
+        return driver.findElement(By.xpath(locator)).getText();
     }
 
     public String getCurrentMonth() {
