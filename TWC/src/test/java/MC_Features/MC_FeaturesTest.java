@@ -9,11 +9,16 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
+import java.io.*;
+
 import util.DataReader;
-import java.util.Date;
+
+import java.util.*;
 
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -23,111 +28,140 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 
 /**
  * Created by nd0ma3 on 2/23/2016.
  */
 public class MC_FeaturesTest extends MC_Features_Base{
+
+    @Test(priority = 0)
+    public void setUpEnvironment(){
+        createExcelFile();
+    }
+
     /**
      * MEM_MSM_1.1_Alt_01
      * This function  will validate alternate flow of date range in job list.
      */
-    //@Test(priority = 1)
-    public void validateAlternateFlowOfDateRange()  {
+    @Test(priority = 1)
+    public void validateAlternateFlowOfDateRange() throws IOException {
+        testId = "MEM_MSM_1.1_Alt_01";
+        expectedResult = "User able to view job list for the date range provided.";
+        // Test Steps:
         logInToTWCWithKWCreds();
         selectMassEmailFromMenu();
         enterDateRangeInMessageSection();
         clickSearch();
         clickFirstMassJob();
-        Assert.assertEquals("Modify Mass E-Mail | Secure Message Center", driver.getTitle());
-        log.info("User successfully able to view job list for the date range provide");
+        // Evaluate and generate reports:
+        actual = "Modify Mass E-Mail | Secure Message Center";
+        expected = driver.getTitle();
+        checkTest();
     }
 
     /**
      * MEM_MSM_1.1_Alt_02
      * This function will validate the functionality of filters in job search list
      */
-    //@Test (priority = 2)
-    public void validateTheFunctionalityOfFiltersInJobSearchList(){
+    @Test (priority = 2)
+    public void validateTheFunctionalityOfFiltersInJobSearchList() throws IOException {
+        testId = "MEM_MSM_1.1_Alt_02";
+        expectedResult = "User should able to see list of filtered related jobs from Mass email job list";
+        // Test Steps:
         logInToTWCWithKWCreds();
         selectMassEmailFromMenu();
         enterValueInSearchTab();
         clickFirstMassJob();
-        Assert.assertEquals("Modify Mass E-Mail | Secure Message Center", driver.getTitle());
-        log.info("Successfully validated the functionality of filters in job search list.");
+        // Evaluate and generate reports:
+        actual = "Modify Mass E-Mail | Secure  Message Center";
+        expected = driver.getTitle();
+        checkTest();
     }
 
     /**
      * MEM_MSM_1.1_Alt_03
      * This function will validate the functionality of Compose Mass Job.
      */
-    //@Test(priority = 3)
-    public void validateTheFunctionalityOfComposeMassJob(){
+    @Test(priority = 3)
+    public void validateTheFunctionalityOfComposeMassJob() throws IOException {
+        testId = "MEM_MSM_1.1_Alt_03";
+        expectedResult = "User able to see Compose Mass job and able to click to create mass job";
+        // Test Steps:
         logInToTWCWithKWCreds();
         selectMassEmailFromMenu();
         enterValueInSearchTab();
         clickFirstMassJob();
-        Assert.assertEquals("Modify Mass E-Mail | Secure Message Center", driver.getTitle());
-        log.info("Successfully validated the functionality of Compose Mass Job.");
+        // Evaluate and generate reports:
+        actual = "Modify Mass E-Mail | Secure Message Center";
+        expected = driver.getTitle();
+        checkTest();
     }
 
     /**
      * MEM_MSM_1.1_Alt_04
      * This function will validate the functionality of In-file / Out-File.
      */
-    //@Test(priority = 4)
-    public void validateTheFunctionalityOfInFileOutFile() {
+    @Test(priority = 4)
+    public void validateTheFunctionalityOfInFileOutFile() throws IOException {
+        testId = "MEM_MSM_1.1_Alt_04";
+        expectedResult = "User able to see and select to view the In-File or the Out-File";
+       // Test Steps:
         logInToTWCWithKWCreds();
         selectMassEmailFromMenu();
         enterDateRangeInMessageSection();
         clickSearch();
         clickFirstInFile();
         clickFirstOutFile();
-        //Assert.assertEquals("Modify Mass E-Mail | Secure Message Center", driver.getTitle());
-        log.info("Successfully validated the functionality of In-file / Out-File.");
+        actual = "some string"; // this portions of code have to be changed
+        expected = "some string";
+        checkTest();
     }
 
     /**
      * MEM_MSM_1.1_Main_01
      * This function will validate the default date range of 'Mass Email Job List.
      */
-    //@Test(priority = 5)
-    public void validateDefaultDateRangeOfMassEmailJobList(){
+    @Test(priority = 5)
+    public void validateDefaultDateRangeOfMassEmailJobList() throws IOException {
+        testId = "MEM_MSM_1.1_Main_01";
+        expectedResult = "User should able to see default date range as 6 months for mass email job list";
+        // Test Steps:
         logInToTWCWithKWCreds();
         selectMassEmailFromMenu();
-        String from = getAttributeByXpath(dateRangeFrom);
-        String to = getDateOfChoose(new Date(), -182);
-        Assert.assertEquals(from, to);
-        log.info("Successfully validated default date range of 'Mass Email Job List.");
+        // Evaluate and generate reports:
+        actual = getAttributeByXpath(dateRangeFrom);
+        expected= getDateOfChoose(new Date(), -182);
+        checkTest();
     }
 
     /**
      * MEM_MSM_1.1_Main_02
      * This function will validate 'Search on date range' of 'Mass Email Job List'.
      */
-    //@Test(priority = 6)
-    public void validateSearchOnDateRangeOfMMassEmailJobList(){
+    @Test(priority = 6)
+    public void validateSearchOnDateRangeOfMMassEmailJobList() throws IOException {
+        testId = "MEM_MSM_1.1_Main_02";
+        expectedResult = "User should able see 'Search on date range' in job list view";
+        // Test Steps:
         logInToTWCWithKWCreds();
         selectMassEmailFromMenu();
-        String message = getTextByXpath(showingMessage);
-        Assert.assertEquals( message.substring(0, 7), "Showing");
-        log.info("Successfully validated 'Search on date range' of 'Mass Email Job List'");
+        // Evaluate and generate reports:
+        actual = "Showing";
+        expected = getTextByXpath(showingMessage).substring(0, 7);
+        checkTest();
     }
 
     /**
      * MEM_MSM_1.1_Main_03
      * This function will validate 'Search on date range' error msg.
      */
-   // @Test(priority = 7)
-    public void validateSearchOnDateRangeErrorMsg(){
+    @Test(priority = 7)
+    public void validateSearchOnDateRangeErrorMsg() throws IOException {
+        testId = "MEM_MSM_1.1_Main_03";
+        expectedResult = "Error message displayed with 'The start date cannot be later than the end date'";
+        // Test Steps:
         logInToTWCWithKWCreds();
         selectMassEmailFromMenu();
         clearField(dateRangeFrom);
@@ -135,8 +169,11 @@ public class MC_FeaturesTest extends MC_Features_Base{
         clearField(dateRangeTo);
         typeByXpathThenEnter(dateRangeTo, getDateOfChoose(new Date(), -30));
         typeByXpathThenEnter(dateRangeTo, "");
-        Assert.assertEquals(getTextByXpath(dateErrorMessage), "From Date cannot be later than To Date");
-        log.info("Successfully validated 'Search on date range' error message.");
+        actual = "From  Date cannot be later than To Date";
+        expected = getTextByXpath(dateErrorMessage);
+        checkTest();
+//        Assert.assertEquals(getTextByXpath(dateErrorMessage), "From Date cannot be later than To Date");
+//        log.info("Successfully validated 'Search on date range' error message.");
     }
 
 
@@ -145,57 +182,13 @@ public class MC_FeaturesTest extends MC_Features_Base{
     String path = "C:\\Users\\nd0ma3\\Desktop\\Selenium\\My Workspace\\DOL\\TWC\\Data\\Report.xls";
 
 
-    @Test(priority = 8)
+    //@Test(priority = 8)
     public void testAmazon() throws IOException, InterruptedException, WriteException {
         String[][] itemLocator = dr.fileReader(path);
         for (int i = 1; i<itemLocator.length; i++){
             typeByCssThenEnter(itemLocator[i][0], itemLocator[i][1]);
         }
-
-        //writeInExcel();
-
+//        createExcelFile(); writeInExcelFile();
         sleepfor(5);
     }
-
-
-    public void writeInExcel() {
-        HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("Employee Data1");
-        Map<String, Object[]> data = new TreeMap<String, Object[]>();
-        Set<String> keyset = data.keySet();
-        int rownum = 0;
-        data.put("1", new Object[]{"ID", "NAME", "LASTNAME", "AGE"});
-        data.put("2", new Object[]{1, "Amit", "Shukla", "12"});
-        data.put("3", new Object[]{2, "Lokesh", "Gupta", "13"});
-        data.put("4", new Object[]{3, "John", "Adwards", "14"});
-        data.put("5", new Object[]{4, "Brian", "Schultz", "15"});
-        data.put("6", new Object[]{5, "Amit", "Shukla", "12"});
-        for (String key : keyset) {
-            Row row = sheet.createRow(rownum++);
-            Object[] objArr = data.get(key);
-            int cellnum = 0;
-            for (Object obj : objArr) {
-                Cell cell = row.createCell(cellnum++);
-                if (obj instanceof String) {
-                    cell.setCellValue((String) obj);
-                } else if (obj instanceof Integer) {
-                    cell.setCellValue((Integer) obj);
-                }
-            }
-        }
-        try {
-            //Write the workbook in file system
-            FileOutputStream out = new FileOutputStream("demo.xls", true);
-            workbook.write(out);
-            out.flush();
-            out.close();
-            System.out.println("demo.xlsx written successfully on disk.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
 }
