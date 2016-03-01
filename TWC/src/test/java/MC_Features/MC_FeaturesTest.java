@@ -1,35 +1,9 @@
 package MC_Features;
 
 import TWC_Base.MC_Features_Base;
-import jxl.write.Label;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
-import jxl.write.WriteException;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.Assert;
-import org.testng.ITestContext;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.io.*;
-
-import util.DataReader;
-
 import java.util.*;
-
-
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-
 import java.io.IOException;
-
 
 /**
  * Created by nd0ma3 on 2/23/2016.
@@ -75,7 +49,7 @@ public class MC_FeaturesTest extends MC_Features_Base{
         enterValueInSearchTab();
         clickFirstMassJob();
         // Evaluate and generate reports:
-        actual = "Modify Mass E-Mail | Secure  Message Center";
+        actual = "Modify Mass E-Mail | Secure Message Center";
         expected = driver.getTitle();
         checkTest();
     }
@@ -114,6 +88,7 @@ public class MC_FeaturesTest extends MC_Features_Base{
         clickSearch();
         clickFirstInFile();
         clickFirstOutFile();
+        // Evaluate and generate reports:
         actual = "some string"; // this portions of code have to be changed
         expected = "some string";
         checkTest();
@@ -132,7 +107,7 @@ public class MC_FeaturesTest extends MC_Features_Base{
         selectMassEmailFromMenu();
         // Evaluate and generate reports:
         actual = getAttributeByXpath(dateRangeFrom);
-        expected= getDateOfChoose(new Date(), -182);
+        expected= getDateOfChoose(new Date(), -180);
         checkTest();
     }
 
@@ -159,36 +134,41 @@ public class MC_FeaturesTest extends MC_Features_Base{
      */
     @Test(priority = 7)
     public void validateSearchOnDateRangeErrorMsg() throws IOException {
+
         testId = "MEM_MSM_1.1_Main_03";
         expectedResult = "Error message displayed with 'The start date cannot be later than the end date'";
         // Test Steps:
         logInToTWCWithKWCreds();
         selectMassEmailFromMenu();
         clearField(dateRangeFrom);
-        typeByXpath(dateRangeFrom,  getTodaysDate());
+        typeByXpath(dateRangeFrom, getTodaysDate());
         clearField(dateRangeTo);
         typeByXpathThenEnter(dateRangeTo, getDateOfChoose(new Date(), -30));
         typeByXpathThenEnter(dateRangeTo, "");
-        actual = "From  Date cannot be later than To Date";
+        // Evaluate and generate reports:
+        actual = "From Date cannot be later than To Date";
         expected = getTextByXpath(dateErrorMessage);
+
         checkTest();
-//        Assert.assertEquals(getTextByXpath(dateErrorMessage), "From Date cannot be later than To Date");
-//        log.info("Successfully validated 'Search on date range' error message.");
     }
 
-
-    DataReader dr = new DataReader();
-
-    String path = "C:\\Users\\nd0ma3\\Desktop\\Selenium\\My Workspace\\DOL\\TWC\\Data\\Report.xls";
-
-
-    //@Test(priority = 8)
-    public void testAmazon() throws IOException, InterruptedException, WriteException {
-        String[][] itemLocator = dr.fileReader(path);
-        for (int i = 1; i<itemLocator.length; i++){
-            typeByCssThenEnter(itemLocator[i][0], itemLocator[i][1]);
-        }
-//        createExcelFile(); writeInExcelFile();
-        sleepfor(5);
+    /**
+     * MEM_MSM_1.1_Main_04
+     * This function will validate Search date range updated as '6 months' by default.
+     */
+    @Test(priority = 8)
+    public void validateSearchDateRangeUpdatedAs6MonthsByDefault() throws IOException {
+        testId = "MEM_MSM_1.1_Main_04";
+        expectedResult = "User should able to see Search date range updated as '6 months' by default";
+        // Test Steps:
+        logInToTWCWithKWCreds();
+        selectMassEmailFromMenu();
+        // Evaluate and generate reports:
+        String from  = getAttributeByXpath(dateRangeFrom);
+        String to = getAttributeByXpath(dateRangeTo);
+        long difference = ((new Date(from).getTime() - new Date(to).getTime())/86399999);
+        actual = "" + difference;
+        expected = "-182";
+        checkTest();
     }
 }

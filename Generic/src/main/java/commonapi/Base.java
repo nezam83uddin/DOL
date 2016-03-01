@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 
@@ -55,8 +56,20 @@ public class Base {
     }
 
     @AfterMethod
-    public void cleanUp()throws InterruptedException{
-        //sleepfor(2);
+    public void cleanUp(ITestResult result)throws InterruptedException{
+        if (ITestResult.FAILURE == result.getStatus()) {
+            String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+            try {
+                TakesScreenshot ts = (TakesScreenshot) driver;
+                File source = ts.getScreenshotAs(OutputType.FILE);
+
+//                FileUtils.copyFile(source, new File("C:\\Users\\nd0ma3\\Desktop\\Selenium\\My Workspace\\DOL\\TWC\\Data\\Screenshots\\" + "Test_002_" + timeStamp + ".png"));
+                FileUtils.copyFile(source, new File(".\\Data\\Screenshots\\" + result.getName() + "_" + timeStamp + ".png"));
+                System.out.println("Screenshot taken");
+            } catch (Exception e) {
+                System.out.println("Exception while taking screenshot " + e.getMessage());
+            }
+        }
         log.info("driver is quiting");
         //sleepfor(2);
         driver.quit();

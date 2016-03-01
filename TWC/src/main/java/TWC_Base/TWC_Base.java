@@ -5,9 +5,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import util.DataReader;
 import org.testng.Assert;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,7 +26,6 @@ public class TWC_Base extends Base {
     public String search = ".//*[@id='form:j_id_jsp_1675652393_11pc5']";
     public String calendar = ".//*[@id='form']/div[1]/div[3]/fieldset/div/label[2]/img";
     public String searchField = ".//*[@id='form:myTable_filter']/label/input";
-
 
     /**
      * List of fields for report generations.
@@ -53,12 +50,12 @@ public class TWC_Base extends Base {
         typeByCss("#PASSWORD", password);
         clickByXpath(".//*[@id='signin']");
         Assert.assertEquals("Message Inbox | Secure Message Center", driver.getTitle());
-        log.info("Successfully loged in on TWC!");
+        log.info("Successfully logged in on TWC!");
     }
 
     public void createExcelFile() {
         HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("Employee Data1");
+        HSSFSheet sheet = workbook.createSheet("MC_Features");
         Map<String, Object[]> data = new TreeMap<String, Object[]>();
         Set<String> keyset = data.keySet();
         int rownum = 0;
@@ -80,18 +77,18 @@ public class TWC_Base extends Base {
         }
         try {
             //Write the workbook in file system
-            FileOutputStream out = new FileOutputStream("Report.xls", false);
+            FileOutputStream out = new FileOutputStream(".\\Data\\" + "Report.xls", false);
             workbook.write(out);
             out.flush();
             out.close();
-            System.out.println("demo.xlsx written successfully on disk.");
+            System.out.println("Report.xls written successfully on disk.");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void writeInExcelFile() throws IOException {
-        FileInputStream input = new FileInputStream("Report.xls");
+        FileInputStream input = new FileInputStream(".\\Data\\" + "Report.xls");
         HSSFWorkbook workbook = new HSSFWorkbook(input);
 
         HSSFSheet sheet = workbook.getSheetAt(0);
@@ -116,7 +113,7 @@ public class TWC_Base extends Base {
         }
         try {
             //Write the workbook in file system
-            FileOutputStream out = new FileOutputStream("Report.xls", false);
+            FileOutputStream out = new FileOutputStream(".\\Data\\" + "Report.xls", false);
             workbook.write(out);
             out.flush();
             out.close();

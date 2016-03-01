@@ -6,7 +6,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -79,5 +78,20 @@ import java.io.IOException;
             fio.close();
             wb.close();
         }
+
+//    DataReader dr = new DataReader();
+//
+//    String path = "C:\\Users\\nd0ma3\\Desktop\\Selenium\\My Workspace\\DOL\\TWC\\Data\\Report.xls";
+//
+//
+//    //@Test(priority = 8)
+//    public void testAmazon() throws IOException, InterruptedException, WriteException {
+//        String[][] itemLocator = dr.fileReader(path);
+//        for (int i = 1; i<itemLocator.length; i++){
+//            typeByCssThenEnter(itemLocator[i][0], itemLocator[i][1]);
+//        }
+////        createExcelFile(); writeInExcelFile();
+//        sleepfor(5);
+//    }
     }
 

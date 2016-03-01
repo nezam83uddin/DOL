@@ -1,6 +1,12 @@
 package TWC_Base;
 
+import org.testng.IClass;
+import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
+import org.testng.ITestResult;
+
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by nd0ma3 on 2/22/2016.
@@ -86,5 +92,105 @@ public class MC_Features_Base extends TWC_Base{
         //clickByXpath(search);
     }
 
+    ITestResult testResult = new ITestResult() {
+        public int getStatus() {
+            return 0;
+        }
 
+        public void setStatus(int i) {
+
+        }
+
+        public String getTestId() {
+            return testId;
+        }
+
+        public void setTestId(String initId) {
+            testId = initId;
+        }
+
+        public ITestNGMethod getMethod() {
+            return null;
+        }
+
+        public Object[] getParameters() {
+            return new Object[0];
+        }
+
+        public void setParameters(Object[] objects) {
+
+        }
+
+        public IClass getTestClass() {
+            return null;
+        }
+
+        public Throwable getThrowable() {
+            return null;
+        }
+
+        public void setThrowable(Throwable throwable) {
+
+        }
+
+        public long getStartMillis() {
+            return 0;
+        }
+
+        public long getEndMillis() {
+            return 0;
+        }
+
+        public void setEndMillis(long l) {
+
+        }
+
+        public String getName() {
+            return null;
+        }
+
+        public boolean isSuccess() {
+            return false;
+        }
+
+        public String getHost() {
+            return null;
+        }
+
+        public Object getInstance() {
+            return null;
+        }
+
+        public String getTestName() {
+            return null;
+        }
+
+        public String getInstanceName() {
+            return null;
+        }
+
+        public ITestContext getTestContext() {
+            return null;
+        }
+
+        public int compareTo(ITestResult o) {
+            return 0;
+        }
+
+        public Object getAttribute(String s) {
+            return null;
+        }
+
+        public void setAttribute(String s, Object o) {
+
+        }
+
+        public Set<String> getAttributeNames() {
+            return null;
+        }
+
+        public Object removeAttribute(String s) {
+            return null;
+        }
+    };
 }
