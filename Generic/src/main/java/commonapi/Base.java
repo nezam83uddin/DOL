@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -148,8 +148,13 @@ public class Base {
     public void clickByXpath(String locator){
         driver.findElement(By.xpath(locator)).click();}
 
+    public void findByXpath(String locator){
+        driver.findElement(By.xpath(locator));
+    }
+
     public void getTitle(){
-        driver.getTitle();}
+        driver.getTitle();
+    }
 
     public void typeByCssThenEnter(String locator, String value ) {
         driver.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
@@ -171,8 +176,8 @@ public class Base {
         driver.findElement(By.cssSelector(locator)).sendKeys(text);
     }
 
-    public void clickCheckBox(String s) {
-        driver.findElement(By.id(s)).click();
+    public void clickCheckBox(String i) {
+        driver.findElement(By.id(i)).click();
     }
 
     public void switchWindow() {
@@ -230,5 +235,9 @@ public class Base {
     public void selectFromDropdown(String locator, int index) {
         Select dropdown = new Select(driver.findElement(By.xpath(locator)));
         dropdown.selectByIndex(index);
+    }
+
+    public boolean findStringIgnoreCase(String s1, String s2) {
+        return StringUtils.containsIgnoreCase(s1, s2);
     }
 }

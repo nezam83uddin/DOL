@@ -9,7 +9,7 @@ import java.io.BufferedWriter;
  */
 public class CreateClaimTest extends WPM_Base{
 
-    private int numberOfClaim = 2;
+    private int numberOfClaim = 20;
 
     /**
 	 * Audit and Monetary System
@@ -80,7 +80,9 @@ public class CreateClaimTest extends WPM_Base{
     private String employerExchange = ".//*[@id='empExchange']";
     private String employerNumber = ".//*[@id='empNumber']";
     private String employerExtension = ".//*[@id='empExtension']";
-    private String employerIndustryCodeDropdownMenu = "html/body/table/tbody/tr[4]/td/div[3]/form/table/tbody/tr[4]/td/table/tbody/tr[9]/td/table/tbody/tr/td[2]/select";
+//    private String employerIndustryCodeDropdownMenu = "html/body/table/tbody/tr[4]/td/div[3]/form/table/tbody/tr[4]/td/table/tbody/tr[9]/td/table/tbody/tr/td[2]/select";
+    private String employerIndustryCodeDropdownMenu = "html/body/table/tbody/tr[4]/td/div[3]/form/table/tbody/tr[5]/td/table/tbody/tr[2]/td[2]/select";
+
 
     /**
      * Complaint Information
@@ -88,7 +90,9 @@ public class CreateClaimTest extends WPM_Base{
     private String complaintSourceOfComplaintDropdownMenu = "html/body/table/tbody/tr[4]/td/div[3]/form/table/tbody/tr[5]/td/table/tbody/tr[2]/td[2]/select";
     private String complaintTypeRadioButton1 = ".//*[@id='22221']/table/tbody/tr[2]/td[1]/input";
     private String complaintTypeRadioButton2 = ".//*[@id='22221']/table/tbody/tr[3]/td[1]/input";
-    private String complaintDistrictDropdownMenu = ".//*[@id='22223']/select";
+//    private String complaintDistrictDropdownMenu = ".//*[@id='22223']/select";
+    private String complaintDistrictDropdownMenu = ".//*[@id='11113']/select[1]";
+
     private String complaintBeginDateMM = ".//*[@id='beginDateMM']";
     private String complaintBeginDateDD = ".//*[@id='beginDateDD']";
     private String complaintBeginDateYYYY = ".//*[@id='beginDateYYYY']";
@@ -142,8 +146,9 @@ public class CreateClaimTest extends WPM_Base{
         FileOutputStream fos = new FileOutputStream(fout);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 
-        login("pwsuper1", "Test1234");
-        clickByXpath("html/body/table/tbody/tr[4]/td/div/a[9]");
+        login("lssuperv1", "Test1234");
+        clickByXpath("html/body/table/tbody/tr[4]/td/div/a[12]");
+//        clickByXpath("html/body/table/tbody/tr[4]/td/div/a[9]");
         sleepfor(1);
 
         for (int i = 0; i < numberOfClaim; i++) {
@@ -204,53 +209,59 @@ public class CreateClaimTest extends WPM_Base{
         typeByXpath(employerExtension, "");
         selectFromDropdown(employerIndustryCodeDropdownMenu, 1);
 
-        /**
-         * Complaint Information
-         */
-        selectFromDropdown(complaintSourceOfComplaintDropdownMenu, 1);
-        //typeByXpath(complaintTypeRadioButton1, "1");
-        //typeByXpath(complaintTypeRadioButton2, "1");
-        selectFromDropdown(complaintDistrictDropdownMenu, 2);
-        typeByXpath(complaintBeginDateMM, "11");
-        typeByXpath(complaintBeginDateDD, "22");
-        typeByXpath(complaintBeginDateYYYY, "2015");
-        typeByXpath(complaintEndDateMM, "" + LocalDateTime.now().getMonthValue());
-        typeByXpath(complaintEndDateDD, "" + LocalDateTime.now().getDayOfMonth());
-        typeByXpath(complaintEndDateYYYY, "" + LocalDateTime.now().getYear());
-        typeByXpath(complaintRate, "35");
-        selectFromDropdown(complaintPerDropdownMenu, 5);
-        selectFromDropdown(complaintOccupationDropdownMenu, 2);
-        //typeByXpath(complaintJobTitle, "");
-        typeByXpath(complaintComplain, "Issuing a private right of action letter so that I may pursue my unpaid wages and other damages through a civil lawsuit against my employer");
-        selectFromDropdown(complaintLanguageDropdownMenu, 2);
+//        /**
+//         * Complaint Information
+//         */
+//        selectFromDropdown(complaintSourceOfComplaintDropdownMenu, 1);
+//        //typeByXpath(complaintTypeRadioButton1, "1");
+//        //typeByXpath(complaintTypeRadioButton2, "1");
 
-        /**
-         * Complaint Specific Information
-         */
-        typeByXpath(complaintPwProjectLocation, "Building A");
-        selectFromDropdown(complaintCountryDropdownMenu, 3);
-        typeByXpath(complaintPwDOJ, "Contracting Agency");
-        typeByXpath(complaintPwDOJAddress, "Contracting Agency Address");
-        typeByXpath(complaintPwPRC, "" + steady);
-        typeByXpath(complaintPwPrimeContractor, "");
-        //typeByXpath(complaintFindPrimeContractorButton, "1");
-        //typeByXpath(complaintClearPrimeContractorButton, "1");
-        //typeByXpath(complaintBusinessTypeDropdownMenu, "1");
-        typeByXpath(complaintPwFein1, "98");
-        typeByXpath(complaintPwFein2, "765" + steady);
-        typeByXpath(complaintPwpwFirstName, "QMC_Employer");
-        typeByXpath(complaintPwLastName, "PW_" + steady + "_Employer");
-        typeByXpath(complaintPwAddress1, "456 " + steady + " Street");
-        typeByXpath(complaintPwAddress2, "Apt # 3A");
-        typeByXpath(complaintPwAddress3, "");
-        typeByXpath(complaintPwCity, "Albany");
-        typeByXpath(complaintPwState, "NY");
-        typeByXpath(complaintPwZip, "12240");
-        typeByXpath(complaintPwAreaCode, "518");
-        typeByXpath(complaintPwExchange, "111");
-        typeByXpath(complaintPwNumber, "" + steady);
-        typeByXpath(complaintPwExtension, "");
-        //typeByXpath(complaintJETFClaim, "1");
+//            String checkboxXPath = "//input[contains(@id, 'lstCategory_0')]";
+//            IWebElement elementToClick = driver.FindElement(By.Xpath(checkboxXPath));
+//            elementToClick.Click();
+
+            clickByXpath(".//*[@id='11112']/table/tbody/tr[2]/td[1]/input");
+        selectFromDropdown(complaintDistrictDropdownMenu, 2);
+//        typeByXpath(complaintBeginDateMM, "11");
+//        typeByXpath(complaintBeginDateDD, "22");
+//        typeByXpath(complaintBeginDateYYYY, "2015");
+//        typeByXpath(complaintEndDateMM, "" + LocalDateTime.now().getMonthValue());
+//        typeByXpath(complaintEndDateDD, "" + LocalDateTime.now().getDayOfMonth());
+//        typeByXpath(complaintEndDateYYYY, "" + LocalDateTime.now().getYear());
+//        typeByXpath(complaintRate, "35");
+//        selectFromDropdown(complaintPerDropdownMenu, 5);
+//        selectFromDropdown(complaintOccupationDropdownMenu, 2);
+//        //typeByXpath(complaintJobTitle, "");
+//        typeByXpath(complaintComplain, "Issuing a private right of action letter so that I may pursue my unpaid wages and other damages through a civil lawsuit against my employer");
+//        selectFromDropdown(complaintLanguageDropdownMenu, 2);
+//
+//        /**
+//         * Complaint Specific Information
+//         */
+//        typeByXpath(complaintPwProjectLocation, "Building A");
+//        selectFromDropdown(complaintCountryDropdownMenu, 3);
+//        typeByXpath(complaintPwDOJ, "Contracting Agency");
+//        typeByXpath(complaintPwDOJAddress, "Contracting Agency Address");
+//        typeByXpath(complaintPwPRC, "" + steady);
+//        typeByXpath(complaintPwPrimeContractor, "");
+//        //typeByXpath(complaintFindPrimeContractorButton, "1");
+//        //typeByXpath(complaintClearPrimeContractorButton, "1");
+//        //typeByXpath(complaintBusinessTypeDropdownMenu, "1");
+//        typeByXpath(complaintPwFein1, "98");
+//        typeByXpath(complaintPwFein2, "765" + steady);
+//        typeByXpath(complaintPwpwFirstName, "QMC_Employer");
+//        typeByXpath(complaintPwLastName, "PW_" + steady + "_Employer");
+//        typeByXpath(complaintPwAddress1, "456 " + steady + " Street");
+//        typeByXpath(complaintPwAddress2, "Apt # 3A");
+//        typeByXpath(complaintPwAddress3, "");
+//        typeByXpath(complaintPwCity, "Albany");
+//        typeByXpath(complaintPwState, "NY");
+//        typeByXpath(complaintPwZip, "12240");
+//        typeByXpath(complaintPwAreaCode, "518");
+//        typeByXpath(complaintPwExchange, "111");
+//        typeByXpath(complaintPwNumber, "" + steady);
+//        typeByXpath(complaintPwExtension, "");
+//        //typeByXpath(complaintJETFClaim, "1");
 
         /**
          * Status & Comments

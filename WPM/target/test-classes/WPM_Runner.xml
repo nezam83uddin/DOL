@@ -5,7 +5,10 @@
     <parameter name="useSauceLab" value="false"/>
     <parameter name="userName" value="mdalam"/>
     <parameter name="key" value="662b4ed7-1a59-4ab2-ae8c-2dfe1e32f4aa"/>
-    <parameter name="appUrl" value="https://applicationsstage.labor.state.nyenet/wpm/index.jsp"/>
+    <!--<parameter name="appUrl" value="https://applicationsstage.labor.state.nyenet/wpm/index.jsp"/>-->
+
+    <parameter name="appUrl" value="https://applications-test.labor.ny.gov/wpm/index.jsp"/>
+
     <parameter name="os" value="windows"/>
 
     <!--<parameter name="browserName" value="firefox"/>-->

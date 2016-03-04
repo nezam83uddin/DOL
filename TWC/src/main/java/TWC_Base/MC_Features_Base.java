@@ -23,11 +23,15 @@ public class MC_Features_Base extends TWC_Base{
     /**
      * Below are the list of commonly used locators
      */
-    public String firstJob = ".//*[@id='form:myTable']/tbody/tr[1]/td[2]/a";
+    public String firstJobName = ".//*[@id='form:myTable']/tbody/tr[1]/td[2]/a";
+    public String firstJobDescription = ".//*[@id='form:myTable']/tbody/tr[1]/td[3]/span";
     public String firstInFile = ".//*[@id='form:myTable']/tbody/tr[1]/td[4]/a";
     public String firstOutFile = ".//*[@id='form:myTable']/tbody/tr[1]/td[5]/a";
+    public String firstStatus = ".//*[@id='form:myTable']/tbody/tr[1]/td[7]";
     public String showingMessage = ".//*[@id='form:myTable_info']";
     public String dateErrorMessage = ".//*[@id='errMsgGroup']/ul/li";
+    public String composeNewButton = ".//*[@id='form:myTable:j_id_jsp_920490748_5']";
+    public String createCopyButton = ".//*[@id='form:myTable:j_id_jsp_920490748_6']";
 
     /**
      * This function will check that User able to login successfully.
@@ -67,7 +71,7 @@ public class MC_Features_Base extends TWC_Base{
      * This function will check that user able to see Compose Mass job and able to click to create mass job
      */
     public void clickFirstMassJob(){
-        clickByXpath(firstJob);
+        clickByXpath(firstJobName);
     }
 
     /**

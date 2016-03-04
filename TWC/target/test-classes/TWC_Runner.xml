@@ -8,7 +8,8 @@
     <parameter name="key" value="b6c977a7-498f-4cf5-9846-94e60109cc8f"/>
     <!--<parameter name="appUrl" value="https://www.amazon.com"/>-->
 
-    <parameter name="appUrl" value="https://applicationstest.labor.state.nyenet/TWC/Int"/>
+    <!--<parameter name="appUrl" value="https://applicationstest.labor.state.nyenet/TWC/Int"/>-->
+    <parameter name="appUrl" value="https://applications-test.labor.ny.gov/TWC/Int"/>
     <parameter name="os" value="windows"/>
 
     <!--<parameter name="browserName" value="firefox"/>-->
