@@ -21,6 +21,7 @@ public class TWC_Base extends Base {
 
     public String menu = ".//*[@id='ux-side-nav-toggle']";
     public String massEmail = ".//*[@id='ux-side-nav']/ul/li[8]/a";
+    public String composeNew = ".//*[@id='ux-side-nav']/ul/li[2]/a";
     public String dateRangeFrom = ".//*[@id='form:selectFromDate']";
     public String dateRangeTo = ".//*[@id='form:selectToDate']";
     public String search = ".//*[@id='form:j_id_jsp_1675652393_11pc5']";

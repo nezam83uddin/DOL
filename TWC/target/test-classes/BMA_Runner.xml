@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TWC App running on Firefox Browser">
+
+    <parameter name="useSauceLab" value="false"/>
+    <parameter name="userName" value="mdalam3"/>
+    <!--<parameter name="key" value="662b4ed7-1a59-4ab2-ae8c-2dfe1e32f4aa"/>-->
+    <parameter name="key" value="b6c977a7-498f-4cf5-9846-94e60109cc8f"/>
+    <!--<parameter name="appUrl" value="https://www.amazon.com"/>-->
+
+    <!--<parameter name="appUrl" value="https://applicationstest.labor.state.nyenet/TWC/Int"/>-->
+    <parameter name="appUrl" value="https://qa.my.ny.gov/sreg/Login?APP=nyappdtfotc&amp;TYPE=33554433&amp;REALMOID=06-3fc67b70-75e7-1029-8819-839b24ff0cb3&amp;GUID=&amp;SMAUTHREASON=0&amp;METHOD=GET&amp;SMAGENTNAME=$SM$eox6re4Q10b8AysE04GMwbfiDF%2fpSV8i4U95D5ld6QaWLT2LVZPGAcH%2bNiEdQ8v6&amp;TARGET=$SM$HTTPS%3a%2f%2fotcutm%2etax%2estate%2enyenet%2fwebapp%2fwcs%2fstores%2fservlet%2fSWANSiteminderLogon%3fstoreId%3d10302%26langId%3d-1%26catalogId%3d10002"/>
+
+    <!--<parameter name="appUrl" value="https://otcutm.tax.state.nyenet/webapp/wcs/stores/servlet/StoreCatalogDisplay?catalogId=10002%26storeId=10302%26ddkey=https:SWANSiteminderLogon"/>-->
+
+
+    <parameter name="os" value="windows"/>
+
+    <!--<parameter name="browserName" value="firefox"/>-->
+    <!--<parameter name="browserVersion" value="44.0.2"/>-->
+
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="browserVersion" value="48"/>
+
+    <!--<parameter name="browserName" value="ie"/>-->
+    <!--<parameter name="browserVersion" value="9"/>-->
+
+    <test name="Home Page">
+        <classes>
+            <class name="TWC_Functionality.Business_Initiated"/>
+
+        </classes>
+    </test>
+
+</suite>

@@ -22,7 +22,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -31,6 +33,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+
 /**
  * Created by mdalam on 2/1/16.
  */
@@ -50,6 +53,23 @@ public class Base {
         }
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+//    String encodedUrl="";
+//        try
+//        {
+//            encodedUrl = URLEncoder.encode(appUrl,"UTF-8");
+//        }
+//        catch (Exception e)
+//        {
+//
+//            System.out.println("hi");
+//        }
+
+
+
+
+
+
         driver.navigate().to(appUrl);
         driver.manage().window().maximize();
         log.info("browser loaded with App");

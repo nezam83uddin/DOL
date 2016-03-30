@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TWC App running on Firefox Browser">
+
+    <parameter name="useSauceLab" value="false"/>
+    <parameter name="userName" value="mdalam3"/>
+    <!--<parameter name="key" value="662b4ed7-1a59-4ab2-ae8c-2dfe1e32f4aa"/>-->
+    <parameter name="key" value="b6c977a7-498f-4cf5-9846-94e60109cc8f"/>
+    <!--<parameter name="appUrl" value="https://www.amazon.com"/>-->
+
+    <!--<parameter name="appUrl" value="https://applicationstest.labor.state.nyenet/TWC/Int"/>-->
+    <parameter name="appUrl" value="https://applications-test.labor.ny.gov/TWC/Int"/>
+    <parameter name="os" value="windows"/>
+
+    <!--<parameter name="browserName" value="firefox"/>-->
+    <!--<parameter name="browserVersion" value="44.0.2"/>-->
+
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="browserVersion" value="48"/>
+
+    <!--<parameter name="browserName" value="ie"/>-->
+    <!--<parameter name="browserVersion" value="9"/>-->
+
+    <test name="Home Page">
+        <classes>
+            <class name="MC_Features.MC_FeaturesTest_1"/>
+
+        </classes>
+    </test>
+
+</suite>
